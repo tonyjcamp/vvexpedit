@@ -1,0 +1,21 @@
+extends layout
+
+block content
+
+  ul.pager
+    li
+      unless data.pagination.page === 1
+        a(href= '/search/?q=' + q + '&page=' + (data.pagination.page-1)) Prev
+
+    li
+      unless data.pagination.page == data.pagination.pages
+        a(href= '/search/?q=' + q + '&page=' + (data.pagination.page+1)) Next
+
+  ul(class="list-unstyled list-inline")
+    each item in data.results
+      li(class="col-xs-12 col-sm-4")
+        div
+          a(href='/details/' + item.type + '/' + item.id)
+            h4= item.title
+          a(href='/details/' + item.type + '/' + item.id)
+            img(src= item.thumb)

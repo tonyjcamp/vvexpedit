@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  //- each item, key in data
+  //-   p= key + ':' + item
+  h3= data.name
+  if images
+    p
+      img(src= images[0].uri)
+        
+  p= data.profile
+  
+  if members
+    h5 Members
+    ul.list-inline
+      each member in members
+        li
+          a(href=`${member.resource_url}`) #{member.name}
+
+  if releases
+    ul.list-inline
+      each release in releases
+        if release.type === 'master'
+          li
+            img(src= release.thumb)
+            h5= release.title

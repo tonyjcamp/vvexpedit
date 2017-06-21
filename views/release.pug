@@ -1,0 +1,17 @@
+h1= data.title
+img(src= data.thumb)
+p= data.genres
+p= data.styles
+p= data.year
+
+each artist in data.artists
+  p= artist.name
+
+each label in data.labels
+  p= label.name
+
+each track, key in data.tracklist
+  ul
+    li= track.position
+    li= track.title
+    li= track.duration

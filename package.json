@@ -1,0 +1,21 @@
+{
+  "name": "VVExpedit",
+  "version": "1.0.0",
+  "description": "Learning Discogs API and cataloging records.",
+  "main": "index.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "disconnect": "^1.0.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "lodash": "^4.17.3",
+    "pug": "^2.0.0-beta6"
+  }
+}
