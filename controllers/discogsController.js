@@ -14,7 +14,7 @@ exports.search = (req, res) => {
 }
 
 exports.getReleaseDetails = (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
 
   discogService.getReleaseDetails(id).then((details) => {
     res.render('release', details )
@@ -22,7 +22,7 @@ exports.getReleaseDetails = (req, res) => {
 }
 
 exports.getMasterDetails = (req, res) => {
-  const id = req.params.id
+  const { id } = req.params
 
   discogService.getMasterDetails(id).then((data) => {
     res.render('master', data)

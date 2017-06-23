@@ -38,14 +38,13 @@ exports.getArtist = (id) => {
 
 exports.getReleaseDetails = (id) => {
   return db.getRelease(id).then((details) => {
-    console.log(details)
     return {details}
   })
 }
 
 exports.getMasterDetails = (id) => {
   return db.getMaster(id).then((data) => {
-    const {images} = data
+    const { images } = data
     return {data, images}
   })
 }
