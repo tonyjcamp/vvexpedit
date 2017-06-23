@@ -1,16 +1,16 @@
-h1= data.title
-img(src= data.thumb)
-p= data.genres
-p= data.styles
-p= data.year
+h1= details.title
+img(src= details.thumb)
+p= details.genres
+p= details.styles
+p= details.year
 
-each artist in data.artists
+each artist in details.artists
   p= artist.name
 
-each label in data.labels
-  p= label.name
+if details.images
+  img(src= details.images[0].uri150)
 
-each track, key in data.tracklist
+each track, key in details.tracklist
   ul
     li= track.position
     li= track.title

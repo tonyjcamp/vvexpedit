@@ -5,47 +5,35 @@ exports.home = (req, res) => {
 }
 
 exports.search = (req, res) => {
-  const q = req.query.q
+  const { q } = req.query
   const page = req.query.page ? req.query.page : 1
-  const options = {type: ['artist'], page, per_page: 10}
 
-  res.locals.db.search(q, options).then((data) => {
-    res.render('results', {data, q, page} )
+  discogService.search(q, page).then( (results) => {
+    res.render('results', results)
   })
 }
 
 exports.getReleaseDetails = (req, res) => {
   const id = req.params.id
 
-  res.locals.db.getRelease(id).then((data) => {
-    res.render('release', {'data': data} )
+  discogService.getReleaseDetails(id).then((details) => {
+    res.render('release', details )
   })
 }
 
 exports.getMasterDetails = (req, res) => {
   const id = req.params.id
 
-  res.locals.db.getMaster(id).then((data) => {
-    res.render('master', {'data': data, 'images': data.images})
+  discogService.getMasterDetails(id).then((data) => {
+    res.render('master', data)
   })
 
 }
 
 exports.getArtistDetails = (req, res) => {
-  const {id} = req.params
+  const { id } = req.params
 
-  discogService.getArtist(res, id).then( (data) => {
-    const {id} = data
-
-    discogService.getArtistReleases(res, id).then( (releaseData) => {
-      const {images, members} = data
-      const {releases} = releaseData
-      res.render('artist', {
-        data,
-        images,
-        members,
-        releases
-      })
-    })
+  discogService.getArtist(id).then( (artist) => {
+    res.render('artist', artist)
   })
 }

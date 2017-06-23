@@ -1,12 +1,51 @@
-exports.getArtist = (res, id) => {
-  return res.locals.db.getArtist(id).then((data) => {
-    return data
+const Discogs = require('disconnect').Client
+
+// Authenticate by consumer key and secret
+// Need to have variables.env created
+const dis = new Discogs({
+  consumerKey: process.env.DISCOGS_KEY,
+  consumerSecret: process.env.DISCOGS_SECRET
+})
+
+const db = dis.database()
+
+exports.search = (q, page) => {
+  const options = {type: ['artist'], page, per_page: 10}
+
+  return db.search(q, options).then( (results) => {
+    return {results}
   })
 }
 
-exports.getArtistReleases = (res, id) => {
-  console.log(res)
-  return res.locals.db.getArtistReleases(id).then( (data) => {
-    return data
+exports.getArtist = (id) => {
+
+  return db.getArtist(id).then((data) => {
+    const { id } = data
+
+    return db.getArtistReleases(id).then( (releaseData) => {
+      const {images, members} = data
+      const {releases} = releaseData
+      return {
+        data,
+        images,
+        members,
+        releases
+      }
+    })
+
+  })
+}
+
+exports.getReleaseDetails = (id) => {
+  return db.getRelease(id).then((details) => {
+    console.log(details)
+    return {details}
+  })
+}
+
+exports.getMasterDetails = (id) => {
+  return db.getMaster(id).then((data) => {
+    const {images} = data
+    return {data, images}
   })
 }

@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  //- each item, key in data
+  //- each item, key in artist
   //-   p= key + ':' + item
   h3= data.name
   if images
@@ -22,5 +22,6 @@ block content
       each release in releases
         if release.type === 'master'
           li
-            img(src= release.thumb)
+            a(href=`/details/master/${release.id}`)
+              img(src= release.thumb)
             h5= release.title
