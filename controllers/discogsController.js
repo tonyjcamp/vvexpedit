@@ -33,7 +33,6 @@ exports.getMasterDetails = (req, res) => {
 
 exports.getArtistDetails = (req, res) => {
   const {id} = req.params
-  const getArtist = discogService.getArtist(res, id)
 
   discogService.getArtist(res, id).then( (data) => {
     const {id} = data
