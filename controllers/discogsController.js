@@ -1,3 +1,5 @@
+const discogService = require('./discog-service')
+
 exports.home = (req, res) => {
   res.render('home')
 }
@@ -30,20 +32,21 @@ exports.getMasterDetails = (req, res) => {
 }
 
 exports.getArtistDetails = (req, res) => {
-  const id = req.params.id
+  const {id} = req.params
+  const getArtist = discogService.getArtist(res, id)
 
-  res.locals.db.getArtist(id).then((data) => {
-    return data
-  }).then( (data) => {
-    const artistData = data
-    res.locals.db.getArtistReleases(artistData.id).then( (releaseData) => {
+  discogService.getArtist(res, id).then( (data) => {
+    const {id} = data
+
+    discogService.getArtistReleases(res, id).then( (releaseData) => {
+      const {images, members} = data
+      const {releases} = releaseData
       res.render('artist', {
-        'data': artistData,
-        'images': artistData.images,
-        'members': artistData.members,
-        'releases': releaseData.releases
+        data,
+        images,
+        members,
+        releases
       })
     })
   })
-
 }
