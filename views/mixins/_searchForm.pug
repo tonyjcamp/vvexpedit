@@ -1,4 +1,6 @@
 mixin searchForm()
   form(action="/search" method="get")
-    input(type="text", name="q")
-    input(type="submit", value="go")
+    .input-group
+        input.form-control(type="text", name="q" placeholder="search for artist")
+        span.input-group-btn
+          input(type="submit", value="go" class="btn btn-default")

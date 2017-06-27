@@ -1,4 +1,6 @@
-require('dotenv').config({ path: 'variables.env' })
+if (process.env.NODE_ENV === 'DEVELOPMENT') {
+  require('dotenv').config({ path: 'variables.env' })
+}
 
 const express = require('express')
 const http = require('http')
@@ -7,7 +9,6 @@ const jade = require('jade')
 const bodyParser = require('body-parser')
 const _ = require('lodash')
 const routes = require('./routes/index')
-const Discogs = require('disconnect').Client
 
 app = express()
 app.set('views', path.join(__dirname, 'views'))

@@ -1,4 +1,4 @@
-const discogService = require('./discog-service')
+const discogService = require('../services/discog-service')
 
 exports.home = (req, res) => {
   res.render('home')

@@ -2,10 +2,18 @@
   "name": "VVExpedit",
   "version": "1.0.0",
   "description": "Learning Discogs API and cataloging records.",
-  "main": "index.js",
+  "main": "app.js",
   "private": "true",
+  "now": {
+    "env": {
+      "DISCOGS_KEY": "xWSjUWTyGnKiILhrNeJQ",
+      "DISCOGS_SECRET": "gYdSfxnmbVMrERtzkvIodMlqRKeyfEHT"
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "NODE_ENV=DEVELOPMENT nodemon app.js"
   },
   "author": "",
   "license": "MIT",

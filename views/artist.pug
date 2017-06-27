@@ -4,16 +4,16 @@ block content
   //- each item, key in artist
   //-   p= key + ':' + item
   h3= data.name
-  if images
+  if data.images
     p
-      img(src= images[0].uri)
+      img(src= data.images[0].uri)
         
   p= data.profile
   
-  if members
+  if data.members
     h5 Members
     ul.list-inline
-      each member in members
+      each member in data.members
         li
           a(href=`${member.resource_url}`) #{member.name}
 

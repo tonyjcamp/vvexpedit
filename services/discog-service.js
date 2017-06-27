@@ -20,17 +20,11 @@ exports.search = (q, page) => {
 exports.getArtist = (id) => {
 
   return db.getArtist(id).then((data) => {
-    const { id } = data
+    const {id} = data
 
     return db.getArtistReleases(id).then( (releaseData) => {
-      const {images, members} = data
       const {releases} = releaseData
-      return {
-        data,
-        images,
-        members,
-        releases
-      }
+      return {data, releases}
     })
 
   })
@@ -44,7 +38,7 @@ exports.getReleaseDetails = (id) => {
 
 exports.getMasterDetails = (id) => {
   return db.getMaster(id).then((data) => {
-    const { images } = data
+    const {images} = data
     return {data, images}
   })
 }
