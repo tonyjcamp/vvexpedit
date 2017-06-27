@@ -13,7 +13,7 @@ exports.search = (q, page) => {
   const options = {type: ['artist'], page, per_page: 10}
 
   return db.search(q, options).then( (results) => {
-    return {results}
+    return results
   })
 }
 
