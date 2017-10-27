@@ -7,8 +7,8 @@ p= details.year
 each artist in details.artists
   p= artist.name
 
-if details.images
-  img(src= details.images[0].uri150)
+//- if details.images
+//-   img(src= details.images[0].uri150)
 
 each track, key in details.tracklist
   ul

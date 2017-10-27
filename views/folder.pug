@@ -1,0 +1,6 @@
+each release in releases
+  each artist in release.basic_information.artists
+    div(style="margin: 0 40px 100px")
+      h4= artist.name
+      a(href=`/details/release/${release.id}`)
+        img(src= release.basic_information.thumb)

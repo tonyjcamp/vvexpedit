@@ -1,7 +1,8 @@
 const discogService = require('../services/discog-service')
 
 exports.home = (req, res) => {
-  res.render('home')
+  // console.log(req.isAuthenticated)
+    res.render('home')
 }
 
 exports.search = (req, res) => {
@@ -35,5 +36,19 @@ exports.getArtistDetails = (req, res) => {
 
   discogService.getArtist(id).then( (artist) => {
     res.render('artist', artist)
+  })
+}
+
+// Discogs USER specific functions
+exports.getCollectionFolders = async (req, res) => {
+  const accountData = await discogService.getCollectionFolders(req)
+  const {data, collectionFolders} = accountData
+  res.render('folders', {data, folders: collectionFolders.folders})
+}
+
+exports.getFolder = (req, res) => {
+  discogService.getFolder(req.session.discogsAccount, req.params.id).then( (folder) => {
+    const {releases} = folder
+    res.render('folder', {releases})
   })
 }

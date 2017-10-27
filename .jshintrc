@@ -1,0 +1,10 @@
+{
+  "eqeqeq"        : true,
+  "esversion"     : 6,
+  "asi"           : true,
+  "noempty"       : true,
+  "quotmark"      : "single",
+  "unused"        : true,
+  "varstmt"       : true,
+  "esnext"        : true
+}

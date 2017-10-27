@@ -42,3 +42,23 @@ exports.getMasterDetails = (id) => {
     return {data, images}
   })
 }
+
+// change the expected parameter to be req.session.discogsAccount
+// instead of the whole req
+exports.getCollectionFolders = (req) => {
+  const discogsUser = new Discogs(req.session.discogsAccount)
+  const userCollection = discogsUser.user().collection()
+  return discogsUser.getIdentity().then( (data) => {
+    return userCollection.getFolders(data.username).then( (collectionFolders) => {
+        return {data, collectionFolders}
+    })
+  })
+}
+
+exports.getFolder = async (discogsAccount, folderId) => {
+  const discogsUser = new Discogs(discogsAccount)
+  const userCollection = discogsUser.user().collection()
+  const data = await discogsUser.getIdentity()
+  const folder = await userCollection.getReleases(data.username, folderId)
+  return folder
+}

@@ -14,7 +14,7 @@ block content
     ul.list-inline
       each member in data.members
         li
-          a(href=`${member.resource_url}`) #{member.name}
+          a(href= member.resource_url) #{member.name}
 
   if releases
     ul.list-inline

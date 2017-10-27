@@ -1,0 +1,4 @@
+h2 #{data.username}'s Collection Folders
+each folder in folders
+  p
+    a(href=`/account/folder/${folder.id}`) #{folder.name}
