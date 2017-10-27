@@ -1,46 +1,49 @@
 {
-  "name": "VVExpedit",
-  "version": "1.0.0",
-  "description": "Learning Discogs API and cataloging records.",
-  "main": "app.js",
-  "private": "true",
-  "now": {
-    "env": {
-      "DISCOGS_KEY": "xWSjUWTyGnKiILhrNeJQ",
-      "DISCOGS_SECRET": "gYdSfxnmbVMrERtzkvIodMlqRKeyfEHT"
-    }
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js",
-    "dev": "NODE_ENV=DEVELOPMENT nodemon app.js"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "body-parser": "^1.15.2",
-    "disconnect": "^1.0.2",
-    "dotenv": "^4.0.0",
-    "express": "^4.14.0",
-    "express-session": "^1.15.3",
-    "jade": "^1.11.0",
-    "lodash": "^4.17.3",
-    "node-localstorage": "^1.3.0",
-    "passport": "^0.3.2",
-    "passport-oauth": "^1.0.0",
-    "passport-oauth1": "^1.1.0",
-    "passport-oauth2": "^1.4.0",
-    "pug": "^2.0.0-beta6"
-  },
-  "dependencies": {
-    "connect-flash": "^0.1.1",
-    "connect-mongo": "^1.3.2",
-    "es6-promisify": "^5.0.0",
-    "express-validator": "^3.2.0",
-    "mongoose": "^4.11.0",
-    "mongoose-mongodb-errors": "0.0.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0",
-    "validator": "^7.2.0"
-  }
+	"name": "VVExpedit",
+	"version": "1.0.0",
+	"description": "Learning Discogs API and cataloging records.",
+	"main": "app.js",
+	"private": "true",
+	"now": {
+		"env": {
+			"DISCOGS_KEY": "xWSjUWTyGnKiILhrNeJQ",
+			"DISCOGS_SECRET": "gYdSfxnmbVMrERtzkvIodMlqRKeyfEHT"
+		}
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js",
+		"dev": "cross-env NODE_ENV=DEVELOPMENT nodemon app.js"
+	},
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"body-parser": "^1.15.2",
+		"cross-env": "^5.1.1",
+		"disconnect": "^1.0.2",
+		"dotenv": "^4.0.0",
+		"express": "^4.14.0",
+		"express-session": "^1.15.3",
+		"jade": "^1.11.0",
+		"lodash": "^4.17.3",
+		"node-localstorage": "^1.3.0",
+		"nodemon": "^1.12.1",
+		"passport": "^0.3.2",
+		"passport-oauth": "^1.0.0",
+		"passport-oauth1": "^1.1.0",
+		"passport-oauth2": "^1.4.0",
+		"pug": "^2.0.0-beta6"
+	},
+	"dependencies": {
+		"connect-flash": "^0.1.1",
+		"connect-mongo": "^2.0.0",
+		"cross-env": "^5.1.1",
+		"es6-promisify": "^5.0.0",
+		"express-validator": "^3.2.0",
+		"mongoose": "^4.11.0",
+		"mongoose-mongodb-errors": "0.0.2",
+		"passport-local": "^1.0.0",
+		"passport-local-mongoose": "^4.0.0",
+		"validator": "^7.2.0"
+	}
 }
