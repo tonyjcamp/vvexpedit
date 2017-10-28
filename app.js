@@ -1,5 +1,7 @@
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
-	require('dotenv').config({ path: 'variables.env' })
+  require('dotenv').config({
+    path: 'variables.env'
+  })
 }
 
 const _ = require('lodash')
@@ -17,34 +19,40 @@ const expressValidator = require('express-validator')
 const routes = require('./routes/index')
 const flash = require('connect-flash')
 
-mongoose.connect(process.env.DATABASE, { useMongoClient: true })
+mongoose.connect(process.env.DATABASE, {
+  useMongoClient: true
+})
 mongoose.Promise = global.Promise
 mongoose.connection.on('error', (err) => {
-	console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
+  console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
 })
 
 app = express()
 
 if (process.env.NODE_ENV === 'DEVELOPMENT') {
-	app.use(morgan('tiny'))
+  app.use(morgan('tiny'))
 }
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({
+  extended: true
+}))
 app.use(expressValidator())
 app.use(flash())
 
 app.use(
-	session({
-		secret: process.env.SECRET,
-		key: process.env.KEY,
-		resave: true,
-		saveUninitialized: false,
-		store: new MongoStore({ mongooseConnection: mongoose.connection })
-	})
+  session({
+    secret: process.env.SECRET,
+    key: process.env.KEY,
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection
+    })
+  })
 )
 
 // pass variables to our templates + all requests
