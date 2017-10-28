@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const validator = require('validator');
-const mongodbErrorHandler = require('mongoose-mongodb-errors');
-const passportLocalMongoose = require('passport-local-mongoose');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const validator = require('validator')
+const mongodbErrorHandler = require('mongoose-mongodb-errors')
+const passportLocalMongoose = require('passport-local-mongoose')
 
 const userSchema = new Schema({
 	email: {
@@ -23,8 +23,8 @@ const userSchema = new Schema({
 	resetPasswordExpires: { type: Date },
 	oauthToken: { type: String, trim: true },
 	oauthTokenSecret: { type: String, trim: true }
-});
+})
 
-userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
-userSchema.plugin(mongodbErrorHandler);
-module.exports = mongoose.model('User', userSchema);
+userSchema.plugin(passportLocalMongoose, { usernameField: 'email' })
+userSchema.plugin(mongodbErrorHandler)
+module.exports = mongoose.model('User', userSchema)
