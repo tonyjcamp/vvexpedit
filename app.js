@@ -21,9 +21,7 @@ const flash = require('connect-flash')
 const PORT = process.env.PORT || 4444
 const HOST = '0.0.0.0'
 
-mongoose.connect(process.env.DATABASE, {
-  useMongoClient: true
-})
+mongoose.connect(process.env.DATABASE, { useMongoClient: true })
 mongoose.Promise = global.Promise
 mongoose.connection.on('error', (err) => {
   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
@@ -39,9 +37,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(expressValidator())
 app.use(flash())
 
