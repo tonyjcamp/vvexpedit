@@ -21,7 +21,8 @@ exports.validateRegister = (req, res, next) => {
   })
   req.checkBody('password', 'Password is required!').notEmpty()
   req.checkBody('password-confirm', 'Confirm Password is required')
-  req.checkBody('password-confirm', 'Oops! Your passwords do not match').equals(req.body.password)
+  req.checkBody('password-confirm', 'Oops! Your passwords do not match')
+    .equals(req.body.password)
 
   const errors = req.validationErrors()
   if (errors) {
@@ -34,15 +35,8 @@ exports.validateRegister = (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   try {
-    const {
-      email,
-      name,
-      password
-    } = req.body
-    const user = new User({
-      email,
-      name
-    })
+    const { email, name, password } = req.body
+    const user = new User({ email, name })
     const register = promisify(User.register, User)
     await register(user, password)
   } catch (error) {

@@ -18,6 +18,8 @@ require('./models/User')
 const expressValidator = require('express-validator')
 const routes = require('./routes/index')
 const flash = require('connect-flash')
+const PORT = process.env.PORT || 4444
+const HOST = '0.0.0.0'
 
 mongoose.connect(process.env.DATABASE, {
   useMongoClient: true
@@ -59,5 +61,4 @@ app.use(
 app.use(require('./middlewares/flash'))
 
 app.use('/', routes)
-
-app.listen(4444)
+app.listen(PORT, HOST)
