@@ -23,7 +23,7 @@ exports.getReleaseDetails = async (req, res, next) => {
   try {
     const { id } = req.params
     var releaseDetails = await DiscogService.getReleaseDetails(id)
-    res.render('release', details)
+    res.render('release', releaseDetails)
   } catch (error) {
     next(error)
   }

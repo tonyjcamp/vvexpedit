@@ -35,7 +35,7 @@ class DiscogService {
 
   async getReleaseDetails(id) {
     try {
-      const details = await db.getRelease(id)
+      const details = await this.db.getRelease(id)
       return { details }
     } catch (error) {
       throw error
@@ -44,7 +44,7 @@ class DiscogService {
 
   async getMasterDetails(id) {
     try {
-      const data = await db.getMaster(id)
+      const data = await this.db.getMaster(id)
       const { images } = data
       return { data, images }
     } catch (error) {
