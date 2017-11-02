@@ -4,16 +4,11 @@
 	"description": "Learning Discogs API and cataloging records.",
 	"main": "app.js",
 	"private": "true",
-	"now": {
-		"env": {
-			"DISCOGS_KEY": "xWSjUWTyGnKiILhrNeJQ",
-			"DISCOGS_SECRET": "gYdSfxnmbVMrERtzkvIodMlqRKeyfEHT"
-		}
-	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node app.js",
-		"dev": "cross-env NODE_ENV=DEVELOPMENT nodemon app.js"
+		"dev": "cross-env NODE_ENV=DEVELOPMENT nodemon app.js",
+		"now": "now -e DISCOGS_KEY=@discogs_key -e DISCOGS_SECRET=@discogs_secret -e KEY=@key -e SECRET=@secret"
 	},
 	"author": "",
 	"license": "MIT",

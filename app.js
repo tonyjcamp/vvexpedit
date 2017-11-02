@@ -21,11 +21,11 @@ const flash = require('connect-flash')
 const PORT = process.env.PORT || 4444
 const HOST = '0.0.0.0'
 
-mongoose.connect(process.env.DATABASE, { useMongoClient: true })
-mongoose.Promise = global.Promise
-mongoose.connection.on('error', (err) => {
-  console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
-})
+// mongoose.connect(process.env.DATABASE, { useMongoClient: true })
+// mongoose.Promise = global.Promise
+// mongoose.connection.on('error', (err) => {
+//   console.error(`🙅 🚫 🙅 🚫 🙅 🚫 🙅 🚫 → ${err.message}`)
+// })
 
 app = express()
 
@@ -47,9 +47,9 @@ app.use(
     key: process.env.KEY,
     resave: true,
     saveUninitialized: false,
-    store: new MongoStore({
-      mongooseConnection: mongoose.connection
-    })
+    // store: new MongoStore({
+    //   mongooseConnection: mongoose.connection
+    // })
   })
 )
 

@@ -25,7 +25,7 @@ router.get('/authorize', function(req, res) {
   oAuth.getRequestToken(
     process.env.DISCOGS_KEY,
     process.env.DISCOGS_SECRET,
-    'http://localhost:4444/authorized',
+    process.env.NOW_URL + '/authorized',
     function(err, requestData) {
       // Persist "requestData" here so that the callback handler can
       // access it later after returning from the authorize url
