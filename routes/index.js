@@ -14,7 +14,11 @@ router.get('/details/master/:id', discogsController.getMasterDetails)
 router.get('/details/artist/:id', discogsController.getArtistDetails)
 
 router.get('/register', userController.registerForm)
-router.post('/register', userController.validateRegister, userController.register)
+router.post(
+  '/register',
+  userController.validateRegister,
+  userController.register
+)
 
 router.get('/login', userController.loginForm)
 router.post('/login', authController.login)
